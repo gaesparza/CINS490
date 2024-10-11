@@ -7,7 +7,7 @@ Gabriel Esparza- CINS Capstone Project
 This project is the ultimate game companion that includes features such as stat tracking, player social hub, game news, and tips and tricks.
 
 ## Support Games:
-- Apex Lgeends
+- Apex Legends
 
 ## Supported Platforms:
 - PC 

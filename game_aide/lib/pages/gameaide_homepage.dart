@@ -75,7 +75,7 @@ class _GameAideHomePageState extends State<GameAideHomePage>
         children: [
           FindFriendsPage(game: _selectedGame),
           TipsTricksPage(game: _selectedGame),
-          EventsPage(game: _selectedGame),
+          NewsPage(game: _selectedGame),
           StatTrackingPage(game: _selectedGame)
         ],
       ),

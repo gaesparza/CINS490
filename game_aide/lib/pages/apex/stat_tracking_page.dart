@@ -1,6 +1,3 @@
-// ignore: unused_import
-import 'dart:js_interop_unsafe';
-
 import 'package:flutter/material.dart';
 import 'package:game_aide/models/apex_playerstats.dart';
 import 'package:game_aide/services/apex_api_service.dart';
@@ -198,6 +195,7 @@ String getRankImageAsset(String rankName, int? rankDiv) {
   }
 }
 
+//switch to match legend name to local asset
 String getLegendImageAsset(String legendName) {
   switch (legendName.toLowerCase()) {
     case 'alter':

@@ -1,16 +1,18 @@
-# game_aide
+# Game_Aide
 
-A new Flutter project.
+Gabriel Esparza- CINS Capstone Project
 
 ## Getting Started
 
-This project is a starting point for a Flutter application.
+This project is the ultimate game companion that includes features such as stat tracking, player social hub, game news, and tips and tricks.
 
-A few resources to get you started if this is your first Flutter project:
+## Support Games:
+- Apex Legends
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+## Supported Platforms:
+- PC 
+- Playstation 4 and 5
+- XBOX One and Series X|S
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+## Documentation:
+Game Aide: https://docs.google.com/document/d/1ph-mdvXvs9_-2cZH92BnrtvntrMmYX06mr35CWNQKIM/edit?tab=t.0

@@ -61,7 +61,7 @@ class _NewsPageState extends State<NewsPage> {
     );
   }
 
-//Builds individual article item(img,descrpt,link,)
+//Builds individual article item(img,descrpt,link)
   Widget _buildNewsItem(NewsArticle article) {
     return Card(
       margin: const EdgeInsets.all(8.0),

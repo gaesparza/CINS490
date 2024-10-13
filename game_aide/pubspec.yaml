@@ -33,3 +33,4 @@ flutter:
     - .env
     - assets/ranks/
     - assets/legends/
+    - assets/data/apex_tips.json

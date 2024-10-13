@@ -14,7 +14,7 @@ This project is the ultimate game companion that includes features such as stat 
 - Playstation 4 and 5
 - XBOX One and Series X|S
 
-##Features:
+## Features:
 - Find a Friend Page (Links to official main Apex Legends Discord)
 - Stat Tracking Page (Gives LVL, Rank, UID, Recent Legend)
 - Tips and Tricks Page (Static Dataset of top Apex videos and articles)

@@ -1,7 +1,7 @@
 import 'dart:convert';
 import 'package:http/http.dart' as http;
 import 'package:flutter_dotenv/flutter_dotenv.dart';
-import '../models/apex_playerstats.dart';
+import '../models/apex_models/apex_playerstats.dart';
 
 class ApexApiService {
   final String _baseUrl =

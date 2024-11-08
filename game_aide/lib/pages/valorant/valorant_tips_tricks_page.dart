@@ -1,17 +1,17 @@
 import 'package:flutter/material.dart';
 import 'dart:convert';
 import 'package:flutter/services.dart' show rootBundle;
-import '/models/apex_tips.dart';
+import '/models/val_models/valorant_tips.dart';
 import 'package:url_launcher/url_launcher.dart';
 
-class TipsTricksPage extends StatefulWidget {
-  const TipsTricksPage({super.key, required String game});
+class ValorantTipsTricksPage extends StatefulWidget{
+  const ValorantTipsTricksPage({Key? key}) : super(key: key);
 
   @override
-  _TipsTricksPageState createState() => _TipsTricksPageState();
+  _ValorantTipsTricksPageState createState() => _ValorantTipsTricksPageState();
 }
 
-class _TipsTricksPageState extends State<TipsTricksPage> {
+class _ValorantTipsTricksPageState extends State<ValorantTipsTricksPage> {
   late Future<List<Tip>> _futureTips;
 
   @override
@@ -22,7 +22,7 @@ class _TipsTricksPageState extends State<TipsTricksPage> {
 
   Future<List<Tip>> _loadTips() async {
     final String jsonString =
-        await rootBundle.loadString('assets/data/apex_tips.json');
+        await rootBundle.loadString('/data/valorant_tips.json');
     final List<dynamic> jsonResponse = json.decode(jsonString);
     return jsonResponse.map((json) => Tip.fromJson(json)).toList();
   }
@@ -31,7 +31,7 @@ class _TipsTricksPageState extends State<TipsTricksPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Tips and Tricks'),
+        title: const Text('Valorant Tips and Tricks'),
       ),
       body: FutureBuilder<List<Tip>>(
         future: _futureTips,

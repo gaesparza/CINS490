@@ -1,15 +1,16 @@
 import 'package:flutter/material.dart';
-import 'package:game_aide/models/apex_playerstats.dart';
+import 'package:game_aide/models/apex_models/apex_playerstats.dart';
 import 'package:game_aide/services/apex_api_service.dart';
 
-class StatTrackingPage extends StatefulWidget {
-  const StatTrackingPage({super.key, required String game});
+class ApexStatTrackingPage extends StatefulWidget {
+
+const ApexStatTrackingPage({Key? key}) : super(key: key);
 
   @override
-  _StatTrackingPageState createState() => _StatTrackingPageState();
+  _ApexStatTrackingPageState createState() => _ApexStatTrackingPageState();
 }
 
-class _StatTrackingPageState extends State<StatTrackingPage> {
+class _ApexStatTrackingPageState extends State<ApexStatTrackingPage> {
   final ApexApiService _apiService = ApexApiService();
   final TextEditingController _playerNameController = TextEditingController();
   String _selectedPlatform = 'PC';
@@ -249,6 +250,6 @@ String getLegendImageAsset(String legendName) {
     case 'wraith':
       return 'assets/legends/wraith.png';
     default:
-      throw Exception('legend not found.');
+      return 'No legend Data found';
   }
 }

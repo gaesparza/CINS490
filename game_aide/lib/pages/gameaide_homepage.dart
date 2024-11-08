@@ -1,11 +1,15 @@
 import 'package:flutter/material.dart';
-import 'apex/find_friends_page.dart';
-import 'apex/tips_tricks_page.dart';
-import 'apex/events_page.dart';
-import 'apex/stat_tracking_page.dart';
+import 'apex/apex_find_friends_page.dart';
+import 'apex/apex_tips_tricks_page.dart';
+import 'apex/apex_events_page.dart';
+import 'apex/apex_stat_tracking_page.dart';
+import 'valorant/valorant_stats_page.dart';
+import 'valorant/valorant_events_page.dart';
+import 'valorant/valorant_tips_tricks_page.dart';
+import 'valorant/valorant_friends_page.dart';
 
 class GameAideHomePage extends StatefulWidget {
-  const GameAideHomePage({super.key});
+  const GameAideHomePage({Key? key}) : super(key: key);
 
   @override
   _GameAideHomePageState createState() => _GameAideHomePageState();
@@ -34,6 +38,49 @@ class _GameAideHomePageState extends State<GameAideHomePage>
       setState(() {
         _selectedGame = newGame;
       });
+    }
+  }
+
+  Widget _buildFindFriendsPage(){
+    switch (_selectedGame){
+      case 'Apex Legends':
+      return const ApexFindFriendsPage();
+      case 'Valorant':
+      return const ValorantFriendsPage();
+      default:
+      return const Center(child: Text('Game not found'));
+    }
+  }
+  Widget _buildTipsTricksPage(){
+    switch (_selectedGame){
+      case 'Apex Legends':
+      return const ApexTipsTricksPage();
+      case 'Valorant':
+      return const ValorantTipsTricksPage();
+      default:
+      return const Center(child: Text('Game not found'));
+    }
+  }
+
+    Widget _buildEventsPage(){
+    switch (_selectedGame){
+      case 'Apex Legends':
+      return const ApexNewsPage();
+      case 'Valorant':
+      return const ValorantEventsPage();
+      default:
+      return const Center(child: Text('Game not found'));
+    }
+  }
+
+  Widget _buildStatTrackingPage(){
+    switch(_selectedGame){
+      case 'Apex Legends':
+      return const ApexStatTrackingPage();
+      case 'Valorant':
+      return const ValStatTrackingPage();
+      default:
+      return const Center(child: Text('Game not found'));
     }
   }
 
@@ -73,10 +120,10 @@ class _GameAideHomePageState extends State<GameAideHomePage>
       body: TabBarView(
         controller: _tabController,
         children: [
-          FindFriendsPage(game: _selectedGame),
-          TipsTricksPage(game: _selectedGame),
-          NewsPage(game: _selectedGame),
-          StatTrackingPage(game: _selectedGame)
+          _buildFindFriendsPage(),
+          _buildTipsTricksPage(),
+          _buildEventsPage(),
+          _buildStatTrackingPage(),
         ],
       ),
     );

@@ -1,16 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
 import '/services/apex_news_api.dart';
-import '/models/apex_news.dart';
+import '/models/apex_models/apex_news.dart';
 
-class NewsPage extends StatefulWidget {
-  const NewsPage({super.key, required String game});
+class ApexNewsPage extends StatefulWidget {
+  const ApexNewsPage({Key? key}) : super(key: key);
 
   @override
-  _NewsPageState createState() => _NewsPageState();
+  _ApexNewsPageState createState() => _ApexNewsPageState();
 }
 
-class _NewsPageState extends State<NewsPage> {
+class _ApexNewsPageState extends State<ApexNewsPage> {
   final NewsApiService _newsApiService = NewsApiService();
   late Future<List<NewsArticle>> _futureNewsArticles;
 

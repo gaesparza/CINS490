@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
 
-class FindFriendsPage extends StatefulWidget {
-  const FindFriendsPage({super.key, required String game});
+class ApexFindFriendsPage extends StatefulWidget{
+  const ApexFindFriendsPage({Key? key}) : super(key: key);
 
   @override
-  _FindFriendsPageState createState() => _FindFriendsPageState();
+  _ApexFindFriendsPageState createState() => _ApexFindFriendsPageState();
 }
 
-class _FindFriendsPageState extends State<FindFriendsPage> {
+class _ApexFindFriendsPageState extends State<ApexFindFriendsPage> {
   void _launchDiscordInvite(BuildContext context) async {
     const String _discordInviteUrl = 'https://discord.gg/apexlegends';
 

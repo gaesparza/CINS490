@@ -1,6 +1,6 @@
 import 'dart:convert';
 import 'package:http/http.dart' as http;
-import '/models/apex_news.dart';
+import '/models/apex_models/apex_news.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 
 class NewsApiService {

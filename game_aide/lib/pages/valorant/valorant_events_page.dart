@@ -25,6 +25,14 @@ class _ValorantEventPageState extends State<ValorantEventsPage>{
     return Scaffold(
       appBar: AppBar(
         title: const Text('Valorant Events'),
+        leading: Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Image.asset(
+            'logos/logo-valorant.png',
+            fit: BoxFit.contain,
+            height: 32,
+          ),
+        ),
       ),
       body: FutureBuilder<List<ValorantEvent>>(
         future: _futureEvents,

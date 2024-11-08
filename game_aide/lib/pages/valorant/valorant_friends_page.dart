@@ -31,6 +31,14 @@ class _ValorantFriendsPageState extends State<ValorantFriendsPage> {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Valorant Find Friends'),
+        leading: Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Image.asset(
+            'logos/logo-valorant.png',
+            fit: BoxFit.contain,
+            height: 32,
+          ),
+        ),
       ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),

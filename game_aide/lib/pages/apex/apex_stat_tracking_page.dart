@@ -42,6 +42,11 @@ class _ApexStatTrackingPageState extends State<ApexStatTrackingPage> {
             'Apex Legends Stat Tracking',
             style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
           ),
+            Image.asset(
+            'logos/logo-Apex-Legends.png',
+            fit: BoxFit.contain,
+            height: 32,
+          ),
           const SizedBox(height: 15),
           TextField(
             controller: _playerNameController,

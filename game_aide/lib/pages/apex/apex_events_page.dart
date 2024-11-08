@@ -25,6 +25,14 @@ class _ApexNewsPageState extends State<ApexNewsPage> {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Apex Legend News'),
+         leading: Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Image.asset(
+            'logos/logo-Apex-Legends.png',
+            fit: BoxFit.contain,
+            height: 32,
+          ),
+        ),
       ),
       body: FutureBuilder<List<NewsArticle>>(
         future: _futureNewsArticles,

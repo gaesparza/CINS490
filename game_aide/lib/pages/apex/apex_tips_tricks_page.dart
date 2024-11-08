@@ -32,6 +32,14 @@ class _ApexTipsTricksPageState extends State<ApexTipsTricksPage> {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Tips and Tricks'),
+        leading: Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Image.asset(
+            'logos/logo-Apex-Legends.png',
+            fit: BoxFit.contain,
+            height: 32,
+          ),
+        ),
       ),
       body: FutureBuilder<List<Tip>>(
         future: _futureTips,

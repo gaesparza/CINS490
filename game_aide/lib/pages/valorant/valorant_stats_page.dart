@@ -44,6 +44,11 @@ void _fetchStats(){
               'Valorant Stat Tracking',
               style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
             ),
+            Image.asset(
+            'logos/logo-valorant.png',
+            fit: BoxFit.contain,
+            height: 32,
+          ),
             const SizedBox(height: 15),
             TextField(
               controller: _playerNameController,

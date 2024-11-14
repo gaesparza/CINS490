@@ -32,6 +32,14 @@ class _ValorantTipsTricksPageState extends State<ValorantTipsTricksPage> {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Valorant Tips and Tricks'),
+        leading: Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Image.asset(
+            'logos/logo-valorant.png',
+            fit: BoxFit.contain,
+            height: 32,
+          ),
+        ),
       ),
       body: FutureBuilder<List<Tip>>(
         future: _futureTips,

@@ -3,8 +3,7 @@ import 'package:game_aide/models/apex_models/apex_playerstats.dart';
 import 'package:game_aide/services/apex_api_service.dart';
 
 class ApexStatTrackingPage extends StatefulWidget {
-
-const ApexStatTrackingPage({Key? key}) : super(key: key);
+  const ApexStatTrackingPage({Key? key}) : super(key: key);
 
   @override
   _ApexStatTrackingPageState createState() => _ApexStatTrackingPageState();
@@ -225,6 +224,8 @@ String getLegendImageAsset(String legendName) {
       return 'assets/legends/horizon';
     case 'loba':
       return 'assets/legends/loba.png';
+    case 'lifeline':
+      return 'assets/legends/lifeline.png';
     case 'maggie':
       return 'assets/legends/maggie.png';
     case 'mirage':

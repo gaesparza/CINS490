@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:game_aide/main.dart';
 import 'package:url_launcher/url_launcher.dart';
 
-class ApexFindFriendsPage extends StatefulWidget{
+class ApexFindFriendsPage extends StatefulWidget {
   const ApexFindFriendsPage({Key? key}) : super(key: key);
 
   @override
@@ -30,8 +31,9 @@ class _ApexFindFriendsPageState extends State<ApexFindFriendsPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        backgroundColor: color4,
         title: const Text('Find Friends'),
-         leading: Padding(
+        leading: Padding(
           padding: const EdgeInsets.all(8.0),
           child: Image.asset(
             'logos/logo-Apex-Legends.png',

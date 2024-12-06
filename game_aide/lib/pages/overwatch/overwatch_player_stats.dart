@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:game_aide/main.dart';
 import '/services/overwatch_api_service.dart';
 import '/models/overwatch_models/overwatchplayer_stats.dart';
 
@@ -59,18 +60,20 @@ class _OverwatchStatsPageState extends State<OverwatchStatsPage> {
     final double winRate =
         totalMatches > 0 ? (stats.gamesWon / totalMatches) * 100 : 0;
 
-    return SingleChildScrollView(
-      padding: const EdgeInsets.all(16.0),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Text(
-            'Player: ${summary.username}',
-            style: const TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
-          ),
-          const SizedBox(height: 20),
-          Row(
+    return Card(
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
+      child: SizedBox(
+        width: 650,
+        height: 450,
+        child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 5),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.center,
             children: [
+              Text('Player: ${summary.username}',
+                  style: const TextStyle(
+                      fontSize: 25, fontWeight: FontWeight.bold)),
+              const SizedBox(height: 20),
               summary.rankIconUrl.isNotEmpty
                   ? Image.network(
                       summary.rankIconUrl,
@@ -83,31 +86,23 @@ class _OverwatchStatsPageState extends State<OverwatchStatsPage> {
               const SizedBox(width: 10),
               Text(
                 'Rank: ${_capitalize(summary.rankDivision)} ${summary.rankTier > 0 ? summary.rankTier.toString() : ''}',
+                style:
+                    const TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+              ),
+              const SizedBox(height: 20),
+              Text(
+                'K-D: ${stats.eliminations}-${stats.deaths} (Ratio: ${kdRatio.toStringAsFixed(2)})',
                 style: const TextStyle(fontSize: 18),
               ),
+              const SizedBox(height: 10),
+              Text(
+                'W-L: ${stats.gamesWon}-${stats.gamesLost} (Win Rate: ${winRate.toStringAsFixed(2)}%)',
+                style: const TextStyle(fontSize: 18),
+              ),
+              const SizedBox(height: 20),
             ],
           ),
-          const SizedBox(height: 20),
-          Text(
-            'K-D: ${stats.eliminations}-${stats.deaths} (Ratio: ${kdRatio.toStringAsFixed(2)})',
-            style: const TextStyle(fontSize: 18),
-          ),
-          const SizedBox(height: 10),
-          Text(
-            'W-L: ${stats.gamesWon}-${stats.gamesLost} (Win Rate: ${winRate.toStringAsFixed(2)}%)',
-            style: const TextStyle(fontSize: 18),
-          ),
-          const SizedBox(height: 20),
-          ElevatedButton(
-            onPressed: () {
-              setState(() {
-                _selectedPlayer = null;
-                _playerNameController.clear();
-              });
-            },
-            child: const Text('Search Again'),
-          ),
-        ],
+        ),
       ),
     );
   }
@@ -119,11 +114,10 @@ class _OverwatchStatsPageState extends State<OverwatchStatsPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(_selectedPlayer != null
-            ? '${_selectedPlayer!.summary.username} Stats'
-            : 'Overwatch Stats'),
+        backgroundColor: color4,
+        title: const Text('Overwatch Stat Tracking'),
         leading: Padding(
-          padding: const EdgeInsets.all(8.0),
+          padding: EdgeInsets.all(8.0),
           child: Image.asset(
             'logos/logo-overwatch.png',
             fit: BoxFit.contain,
@@ -132,24 +126,22 @@ class _OverwatchStatsPageState extends State<OverwatchStatsPage> {
         ),
       ),
       body: Padding(
-        padding: const EdgeInsets.all(16.0),
+        padding: const EdgeInsets.all(8.0),
         child: Column(
           children: [
-            if (_selectedPlayer == null) ...[
-              TextField(
-                controller: _playerNameController,
-                decoration: const InputDecoration(
-                  labelText: 'Enter Player Name',
-                  border: OutlineInputBorder(),
-                ),
+            const SizedBox(height: 15),
+            TextField(
+              controller: _playerNameController,
+              decoration: const InputDecoration(
+                labelText: 'Enter Player Name',
               ),
-              const SizedBox(height: 10),
-              ElevatedButton(
-                onPressed: searchPlayers,
-                child: const Text('Search'),
-              ),
-            ],
+            ),
             const SizedBox(height: 10),
+            ElevatedButton(
+              onPressed: searchPlayers,
+              child: const Text('Fetch Stats'),
+            ),
+            const SizedBox(height: 20),
             Expanded(
               child: _isLoading
                   ? const Center(child: CircularProgressIndicator())

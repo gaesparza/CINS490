@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:game_aide/main.dart';
 import 'package:game_aide/models/apex_models/apex_playerstats.dart';
 import 'package:game_aide/services/apex_api_service.dart';
 
@@ -33,139 +34,133 @@ class _ApexStatTrackingPageState extends State<ApexStatTrackingPage> {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.all(16.0),
-      child: Column(
-        children: [
-          const Text(
-            'Apex Legends Stat Tracking',
-            style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
-          ),
-            Image.asset(
+    return Scaffold(
+      appBar: AppBar(
+        backgroundColor: color4,
+        title: const Text('Apex Legends Stat Tracking'),
+        leading: Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Image.asset(
             'logos/logo-Apex-Legends.png',
             fit: BoxFit.contain,
             height: 32,
           ),
-          const SizedBox(height: 15),
-          TextField(
-            controller: _playerNameController,
-            decoration: const InputDecoration(
-              labelText: 'Enter Player Name',
-              border: OutlineInputBorder(),
+        ),
+      ),
+      body: Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: Column(
+          children: [
+            const SizedBox(height: 10),
+            TextField(
+              controller: _playerNameController,
+              decoration: InputDecoration(
+                labelText: 'Enter Player Name',
+              ),
             ),
-          ),
-          const SizedBox(height: 10),
-          DropdownButtonFormField<String>(
-            value: _selectedPlatform,
-            decoration: const InputDecoration(
-              labelText: 'Select Platform',
-              border: OutlineInputBorder(),
+            const SizedBox(height: 10),
+            DropdownButtonFormField<String>(
+              value: _selectedPlatform,
+              decoration: InputDecoration(
+                labelText: 'Select Platform',
+              ),
+              items: ['PC', 'PS', 'XBOX'].map((platform) {
+                return DropdownMenuItem(
+                  value: platform,
+                  child: Text(platform),
+                );
+              }).toList(),
+              onChanged: (value) {
+                if (value != null) {
+                  setState(() {
+                    _selectedPlatform = value;
+                  });
+                }
+              },
             ),
-            items: ['PC', 'PS', 'XBOX'].map((platform) {
-              return DropdownMenuItem(
-                value: platform,
-                child: Text(platform),
-              );
-            }).toList(),
-            onChanged: (value) {
-              if (value != null) {
-                setState(() {
-                  _selectedPlatform = value;
-                });
-              }
-            },
-          ),
-          const SizedBox(height: 10),
-          ElevatedButton(
-            onPressed: _fetchStats,
-            child: const Text('Fetch Stats'),
-          ),
-          const SizedBox(height: 20),
-          Expanded(
-            child: _futurePlayerStats == null
-                ? const Center(child: Text('Enter player name'))
-                : FutureBuilder<ApexPlayerStats>(
-                    future: _futurePlayerStats,
-                    builder: (context, snapshot) {
-                      if (snapshot.connectionState == ConnectionState.waiting) {
-                        return const Center(child: CircularProgressIndicator());
-                      } else if (snapshot.hasError) {
-                        return Center(
-                          child: Text(
-                            'Error: ${snapshot.error}',
-                            style: const TextStyle(color: Colors.red),
-                          ),
-                        );
-                      } else if (snapshot.hasData) {
-                        final stats = snapshot.data!;
-                        return _buildStatsView(stats);
-                      } else {
-                        return const Center(child: Text('No Data foound'));
-                      }
-                    },
-                  ),
-          ),
-        ],
+            const SizedBox(height: 10),
+            ElevatedButton(
+              onPressed: _fetchStats,
+              child: const Text('Fetch Stats'),
+            ),
+            const SizedBox(height: 15),
+            Expanded(
+              child: _futurePlayerStats == null
+                  ? const Center(child: Text('Enter player name'))
+                  : FutureBuilder<ApexPlayerStats>(
+                      future: _futurePlayerStats,
+                      builder: (context, snapshot) {
+                        if (snapshot.connectionState ==
+                            ConnectionState.waiting) {
+                          return const Center(
+                              child: CircularProgressIndicator());
+                        } else if (snapshot.hasError) {
+                          return Center(
+                            child: Text(
+                              'Error: ${snapshot.error}',
+                              style: const TextStyle(color: Colors.red),
+                            ),
+                          );
+                        } else if (snapshot.hasData) {
+                          final stats = snapshot.data!;
+                          return _buildStatsView(stats);
+                        } else {
+                          return const Center(child: Text('No Data foound'));
+                        }
+                      },
+                    ),
+            ),
+          ],
+        ),
       ),
     );
   }
 
   Widget _buildStatsView(ApexPlayerStats stats) {
     Legend legend = stats.legends.selected;
-    return SingleChildScrollView(
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Text(
-            'Player: ${stats.global.name}',
-            style: const TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
-          ),
-          Text('UID: ${stats.global.uid}'),
-          Text(
-              'Level: ${stats.global.level} (${stats.global.toNextLevelPercent}% to next level)'),
-          const SizedBox(height: 10),
-          const Text(
-            'Rank',
-            style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
-          ),
-          Row(
+    return Card(
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
+      child: SizedBox(
+        width: 650,
+        height: 450,
+        child: Padding(
+          padding: EdgeInsets.symmetric(horizontal: 5),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.center,
             children: [
+              Text(
+                'Player: ${stats.global.name}',
+                style:
+                    const TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
+              ),
+              Text(
+                  'Level: ${stats.global.level} (${stats.global.toNextLevelPercent}% to next level)'),
+              const SizedBox(height: 10),
+              Text(
+                  'Rank: ${stats.global.rank.rankName} Division ${stats.global.rank.rankDiv}',
+                  style: const TextStyle(
+                      fontSize: 18, fontWeight: FontWeight.bold)),
               Image.asset(
                 getRankImageAsset(
                     stats.global.rank.rankName, stats.global.rank.rankDiv),
-                width: 50,
-                height: 50,
+                width: 40,
+                height: 40,
               ),
               const SizedBox(width: 10),
+              Text('Rank Score: ${stats.global.rank.rankScore} RP'),
+              const SizedBox(height: 10),
               Text(
-                '${stats.global.rank.rankName} Division ${stats.global.rank.rankDiv}',
+                'Selected Legend: ${stats.legends.selected.legendName}',
+                style:
+                    const TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
               ),
+              Image.asset(getLegendImageAsset(legend.legendName), height: 100),
+              const SizedBox(height: 10),
+              Text('Total Kills: ${stats.total.kills}',
+                  style: const TextStyle(fontSize: 16)),
             ],
           ),
-          Text('Rank Score: ${stats.global.rank.rankScore}'),
-          const SizedBox(height: 10),
-          Text(
-            'Selected Legend: ${stats.legends.selected.legendName}',
-            style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
-          ),
-          Image.asset(
-            getLegendImageAsset(legend.legendName),
-            height: 150,
-          ),
-          const SizedBox(height: 10),
-          const Text(
-            'Trackers:',
-            style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
-          ),
-          ...?stats.legends.selected.data?.map((tracker) {
-            return Text('${tracker.name}: ${tracker.value}');
-          }).toList(),
-          const SizedBox(height: 10),
-          Text(
-            'Total Kills: ${stats.total.kills}',
-            style: const TextStyle(fontSize: 16),
-          ),
-        ],
+        ),
       ),
     );
   }

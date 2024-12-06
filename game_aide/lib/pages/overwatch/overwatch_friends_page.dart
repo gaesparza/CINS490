@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:game_aide/main.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class OWFriendsPage extends StatefulWidget {
@@ -30,6 +31,7 @@ class _OWFriendsPageState extends State<OWFriendsPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        backgroundColor: color4,
         title: const Text('Overwatch Find Friends'),
         leading: Padding(
           padding: const EdgeInsets.all(8.0),

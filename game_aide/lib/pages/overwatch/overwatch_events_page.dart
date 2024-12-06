@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'dart:convert';
 import 'package:flutter/services.dart' show rootBundle;
+import 'package:game_aide/main.dart';
 import '/models/overwatch_models/overwatch_events.dart';
 import 'package:url_launcher/url_launcher.dart';
 
@@ -31,6 +32,7 @@ class _OverwatchEventsPageState extends State<OverwatchEventsPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        backgroundColor: color4,
         title: const Text('Overwatch Events'),
         leading: Padding(
           padding: const EdgeInsets.all(8.0),

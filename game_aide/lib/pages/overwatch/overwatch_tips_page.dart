@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'dart:convert';
 import 'package:flutter/services.dart' show rootBundle;
+import 'package:game_aide/main.dart';
 import '/models/overwatch_models/overwatch_tips.dart';
 import 'package:url_launcher/url_launcher.dart';
 
@@ -31,6 +32,7 @@ class _OWTipsTricksPageState extends State<OWTipsTricksPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        backgroundColor: color4,
         title: const Text('Tips and Tricks'),
         leading: Padding(
           padding: const EdgeInsets.all(8.0),

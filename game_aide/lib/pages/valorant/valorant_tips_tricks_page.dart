@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 import 'dart:convert';
 import 'package:flutter/services.dart' show rootBundle;
+import 'package:game_aide/main.dart';
 import '/models/val_models/valorant_tips.dart';
 import 'package:url_launcher/url_launcher.dart';
 
-class ValorantTipsTricksPage extends StatefulWidget{
+class ValorantTipsTricksPage extends StatefulWidget {
   const ValorantTipsTricksPage({Key? key}) : super(key: key);
 
   @override
@@ -31,13 +32,15 @@ class _ValorantTipsTricksPageState extends State<ValorantTipsTricksPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        backgroundColor: color4,
         title: const Text('Valorant Tips and Tricks'),
         leading: Padding(
           padding: const EdgeInsets.all(8.0),
           child: Image.asset(
             'logos/logo-valorant.png',
             fit: BoxFit.contain,
-            height: 32,
+            height: 60,
+            width: 60,
           ),
         ),
       ),

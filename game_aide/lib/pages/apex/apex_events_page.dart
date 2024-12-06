@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:game_aide/main.dart';
 import 'package:url_launcher/url_launcher.dart';
 import '/services/apex_news_api.dart';
 import '/models/apex_models/apex_news.dart';
@@ -24,8 +25,9 @@ class _ApexNewsPageState extends State<ApexNewsPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        backgroundColor: color4,
         title: const Text('Apex Legend News'),
-         leading: Padding(
+        leading: Padding(
           padding: const EdgeInsets.all(8.0),
           child: Image.asset(
             'logos/logo-Apex-Legends.png',

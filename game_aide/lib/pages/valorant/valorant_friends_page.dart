@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:game_aide/main.dart';
 import 'package:url_launcher/url_launcher.dart';
 
-class ValorantFriendsPage extends StatefulWidget{
+class ValorantFriendsPage extends StatefulWidget {
   const ValorantFriendsPage({Key? key}) : super(key: key);
 
   @override
@@ -30,13 +31,15 @@ class _ValorantFriendsPageState extends State<ValorantFriendsPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        backgroundColor: color4,
         title: const Text('Valorant Find Friends'),
         leading: Padding(
           padding: const EdgeInsets.all(8.0),
           child: Image.asset(
             'logos/logo-valorant.png',
             fit: BoxFit.contain,
-            height: 32,
+            height: 60,
+            width: 60,
           ),
         ),
       ),

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:game_aide/main.dart';
 import 'package:game_aide/pages/overwatch/overwatch_friends_page.dart';
 import 'package:game_aide/pages/overwatch/overwatch_tips_page.dart';
 import 'apex/apex_find_friends_page.dart';
@@ -28,7 +29,10 @@ class _GameAideHomePageState extends State<GameAideHomePage>
   @override
   void initState() {
     super.initState();
-    _tabController = TabController(length: 4, vsync: this);
+    _tabController = TabController(
+      length: 4,
+      vsync: this,
+    );
   }
 
   @override
@@ -101,16 +105,19 @@ class _GameAideHomePageState extends State<GameAideHomePage>
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        backgroundColor: color3,
         title: const Text('Game Aide'),
+        centerTitle: true,
         actions: [
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 16),
             child: DropdownButton<String>(
               value: _selectedGame,
               onChanged: _onGameChanged,
-              dropdownColor: Colors.blue,
+              dropdownColor: Theme.of(context).primaryColor,
               underline: const SizedBox(),
-              style: const TextStyle(color: Color.fromARGB(255, 129, 57, 57)),
+              style: const TextStyle(
+                  color: Colors.black87, fontWeight: FontWeight.bold),
               items: _games.map<DropdownMenuItem<String>>((String game) {
                 return DropdownMenuItem<String>(
                   value: game,
@@ -121,6 +128,7 @@ class _GameAideHomePageState extends State<GameAideHomePage>
           ),
         ],
         bottom: TabBar(
+          labelStyle: const TextStyle(fontWeight: FontWeight.bold),
           controller: _tabController,
           tabs: const [
             Tab(text: 'Find a friend'),
